@@ -1,0 +1,218 @@
+/* Basic Body Styling with Flexbox */
+body {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Start from top to allow stacking */
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    padding: 20px; /* Padding to prevent content from touching edges */
+    box-sizing: border-box;
+}
+
+/* Make the gameCanvas responsive and maintain aspect ratio */
+#gameCanvas {
+    width: 90vw;
+    max-width: 300px;
+    /* Dynamically set max-height based on viewport height minus reserved space */
+    max-height: calc(100vh - 200px); /* Adjust 200px as needed for controls and instructions */
+    aspect-ratio: 1 / 2; /* Maintain 1:2 aspect ratio */
+    margin: 0 auto;
+    border: 1px solid #fff;
+    background-color: #111;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+#instructions {
+    margin-top: 20px;
+}
+
+/* Adjust instructions for mobile devices */
+@media (max-width: 768px) {
+    #instructions {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+}
+
+/* Settings Section */
+#settings {
+    margin-top: 20px;
+}
+
+#settings label {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Adjust settings position for better visibility on mobile */
+@media (max-width: 768px) {
+    #settings {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 5px 10px;
+        border-radius: 5px;
+        z-index: 1000; /* Ensure it stays above other elements */
+    }
+}
+
+/* Style for mobile control buttons */
+#mobileControls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none; /* Initially hidden */
+    gap: 10px; /* Existing gap */
+}
+
+/* Double the size of control buttons */
+#mobileControls button {
+    width: 120px; /* Increased from 60px to 120px */
+    height: 120px; /* Increased from 60px to 120px */
+    font-size: 48px; /* Increased from 24px to 48px */
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, width 0.3s, height 0.3s, font-size 0.3s;
+}
+
+#mobileControls button:active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Show controls on devices with width 768px or less */
+@media (max-width: 768px) {
+    #mobileControls {
+        display: flex;
+        bottom: 160px; /* Adjusted from 80px to accommodate larger buttons */
+        gap: 20px; /* Increased gap for larger buttons */
+    }
+    
+    /* When controls are enabled */
+    .enable-controls #mobileControls button {
+        width: 160px; /* Increased from 80px to 160px */
+        height: 160px; /* Increased from 80px to 160px */
+        font-size: 56px; /* Increased from 28px to 56px */
+    }
+}
+
+/* Further increase button sizes for smaller screens */
+@media (max-width: 480px) {
+    #mobileControls {
+        bottom: 200px; /* Further adjust bottom position */
+        gap: 25px; /* Additional gap for smaller screens */
+    }
+
+    .enable-controls #mobileControls button {
+        width: 200px; /* Increased from 160px to 200px */
+        height: 200px; /* Increased from 160px to 200px */
+        font-size: 64px; /* Increased from 56px to 64px */
+    }
+}
+
+/* Adjust canvas size when controls are enabled */
+@media (max-width: 768px) {
+    body.enable-controls #gameCanvas {
+        width: 80vw;
+        max-height: calc(100vh - 220px); /* Increased reserved space for larger buttons */
+    }
+}
+
+/* When controls are enabled */
+.enable-controls #mobileControls {
+    display: flex;
+}
+
+.enable-controls #gameCanvas {
+    margin-bottom: 120px; /* Add bottom margin to prevent overlap with controls */
+}
+
+.enable-controls #mobileControls button {
+    width: 80px; /* Increased from 60px to 80px */
+    height: 80px; /* Increased from 60px to 80px */
+    font-size: 28px; /* Increased from 24px to 28px */
+}
+
+/* Additional adjustments for portrait and landscape orientations */
+@media (max-width: 768px) and (orientation: portrait) {
+    body {
+        padding: 10px;
+    }
+
+    #instructions {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .enable-controls #gameCanvas {
+        width: 85vw;
+        max-height: calc(100vh - 250px); /* More reserved space */
+        margin-bottom: 150px;
+    }
+
+    .enable-controls #mobileControls button {
+        width: 90px;
+        height: 90px;
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    body {
+        padding: 20px;
+    }
+
+    #instructions {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .enable-controls #gameCanvas {
+        width: 70vw;
+        max-height: calc(100vh - 180px); /* Less reserved space */
+        margin-bottom: 100px;
+    }
+
+    .enable-controls #mobileControls button {
+        width: 80px;
+        height: 80px;
+        font-size: 28px;
+    }
+}
+
+/* Style for game selection buttons */
+#gameSelection {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#gameSelection button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+#gameSelection button:hover {
+    background-color: #666;
+}
+
+/* Adjustments when switching games */
+.enable-breakout #gameCanvas {
+    /* Modify canvas size if needed for Breakout */
+    aspect-ratio: 2 / 1; /* Example aspect ratio for Breakout */
+}

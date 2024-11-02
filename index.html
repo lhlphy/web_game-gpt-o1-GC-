@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>俄罗斯方块游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="gameCanvas" width="300" height="600"></canvas>
+    
+    <!-- Game Selection Buttons -->
+    <div id="gameSelection">
+        <button id="playTetrisBtn">Play Tetris</button>
+        <button id="playBreakoutBtn">Play Breakout</button>
+    </div>
+    
+    <div id="instructions">
+        <h2>操作说明：</h2>
+        <ul>
+            <li>← 左移</li>
+            <li>→ 右移</li>
+            <li>↑ 旋转</li>
+            <li>↓ 加速下落</li>
+        </ul>
+    </div>
+    
+    <!-- Settings Section -->
+    <div id="settings">
+        <label>
+            <input type="checkbox" id="toggleControls" />
+            启用屏幕控制按钮
+        </label>
+    </div>
+    
+    <!-- Add on-screen control buttons for mobile devices -->
+    <div id="mobileControls">
+        <button id="leftBtn">←</button>
+        <button id="rotateBtn">↑</button>
+        <button id="rightBtn">→</button>
+    </div>
+        <button id="downBtn">↓</button>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
